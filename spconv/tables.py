@@ -1,8 +1,3 @@
-# Copyright Xuesong LI, UNSW, benzlee08@gmail.com
-# All rights reserved.
-#
-# This source code is licensed under the license found in the
-# LICENSE file in the root directory of this source tree.
 
 from torch.autograd import Function
 #from torch.nn import Module

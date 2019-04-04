@@ -1,9 +1,3 @@
-# Xuesong LI, UNSW, benzlee08@gmail.com
-# All rights reserved.
-#
-# This source code is licensed under the license found in the
-# LICENSE file in the root directory of this source tree.
-
 # Options
 m = 16 # 16 or 32
 residual_blocks=False #True or False
@@ -79,6 +73,7 @@ class Model(nn.Module):
         in0 = self.input0(x)
         # coors = coors.int()[:,[3,2,1,0]] # ordering is [batch, z, y, z]
         coors = in0.get_spatial_locations().int()[:,[3,2,1,0]]
+        coord.cuda()
         ret  = spconv.SparseConvTensor(in0.features, coors, dense_shape, data.batch_size)
         x=self.sparseModel(ret)
         temp0 = scn.SparseConvNetTensor(x.features, in0.metadata)
